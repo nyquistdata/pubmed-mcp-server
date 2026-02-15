@@ -16,7 +16,7 @@ import { config, environment } from "../config/index.js";
 import { ErrorHandler, logger, requestContextService } from "../utils/index.js";
 import { registerPubMedArticleConnectionsTool } from "./tools/pubmedArticleConnections/index.js";
 import { registerPubMedFetchContentsTool } from "./tools/pubmedFetchContents/index.js";
-import { registerPubMedGenerateChartTool } from "./tools/pubmedGenerateChart/index.js";
+// import { registerPubMedGenerateChartTool } from "./tools/pubmedGenerateChart/index.js";
 import { registerPubMedResearchAgentTool } from "./tools/pubmedResearchAgent/index.js";
 import { registerPubMedSearchArticlesTool } from "./tools/pubmedSearchArticles/index.js";
 import { startHttpTransport } from "./transports/http/index.js";
@@ -90,7 +90,8 @@ export async function createMcpServerInstance(): Promise<ServerInstanceInfo> {
     // IMPORTANT: Keep tool registrations in alphabetical order.
     await registerPubMedArticleConnectionsTool(server);
     await registerPubMedFetchContentsTool(server);
-    await registerPubMedGenerateChartTool(server);
+    // Disabled: requires native Cairo/Pango libraries unavailable on Vercel
+    // await registerPubMedGenerateChartTool(server);
     await registerPubMedResearchAgentTool(server);
     await registerPubMedSearchArticlesTool(server);
     logger.info("Resources and tools registered successfully", context);
