@@ -44,7 +44,7 @@ export interface ServerInstanceInfo {
  * @throws {McpError} If any resource or tool registration fails.
  * @private
  */
-async function createMcpServerInstance(): Promise<ServerInstanceInfo> {
+export async function createMcpServerInstance(): Promise<ServerInstanceInfo> {
   const context = requestContextService.createRequestContext({
     operation: "createMcpServerInstance",
   });

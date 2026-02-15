@@ -247,10 +247,7 @@ export function createHttpApp(
   app.use(
     "*",
     async (c: Context<{ Bindings: HonoNodeBindings }>, next: Next) => {
-      (c.env.outgoing as http.ServerResponse).setHeader(
-        "X-Content-Type-Options",
-        "nosniff",
-      );
+      c.header("X-Content-Type-Options", "nosniff");
       await next();
     },
   );
